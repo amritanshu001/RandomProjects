@@ -1,0 +1,12 @@
+.products {
+  text-align: center;
+}
+
+.products ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  /* align-items: space-between; */
+  justify-content: space-around;
+}
