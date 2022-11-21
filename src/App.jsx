@@ -11,11 +11,20 @@ function App() {
   const dispatch = useDispatch();
 
   const dispatchQuotes = useCallback((rawdata) => {
-    if (!rawdata) {
-      dispatch(quoteActions.replaceQuotesyFromServer({ quotes: [] }));
-    } else {
-      dispatch(quoteActions.replaceQuotesyFromServer({ quotes: rawdata }));
-    }
+    console.log(rawdata);
+    // if (!rawdata) {
+    //   dispatch(quoteActions.replaceQuotesyFromServer({ quotes: [] }));
+    // } else {
+    //   const processedData = {
+    //     id: rawdata.id,
+    //     author: rawdata.id.author,
+    //     text: rawdata.id.text,
+    //     ts: rawdata.id.ts,
+    //   };
+    //   dispatch(
+    //     quoteActions.replaceQuotesyFromServer({ quotes: processedData })
+    //   );
+    // }
   }, []);
 
   const {
@@ -26,7 +35,8 @@ function App() {
 
   useEffect(() => {
     const fetchQuoteConfig = {
-      url: "https://react-requests-4b4d2-default-rtdb.firebaseio.com/quotes",
+      url: "https://react-requests-4b4d2-default-rtdb.firebaseio.com/quotes.json",
+      method: "GET",
     };
     fetchQuotes(fetchQuoteConfig);
   }, [fetchQuotes]);
