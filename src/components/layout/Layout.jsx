@@ -17,10 +17,6 @@ const Layout = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   let quoteList = useSelector((state) => state.quotes.allQuotes);
 
-  // if (quoteList.length === 0) {
-  //   quoteList = [...DUMMY_QUOTES];
-  // }
-
   const dispatch = useDispatch();
   const redirect = useHistory();
 

@@ -8,7 +8,10 @@ const quoteSlice = createSlice({
   reducers: {
     addQuote: (state, action) => {
       state.allQuotes.push(action.payload.quote);
-    }
+    },
+    replaceQuotesyFromServer: (state, action) => {
+      state.allQuotes = action.payload.quotes;
+    },
   },
 });
 
