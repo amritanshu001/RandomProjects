@@ -11,24 +11,24 @@ function App() {
   const dispatch = useDispatch();
 
   const dispatchQuotes = useCallback((rawdata) => {
-    console.log(rawdata);
-    // if (!rawdata) {
-    //   dispatch(quoteActions.replaceQuotesyFromServer({ quotes: [] }));
-    // } else {
-    //   const processedData = {
-    //     id: rawdata.id,
-    //     author: rawdata.id.author,
-    //     text: rawdata.id.text,
-    //     ts: rawdata.id.ts,
-    //   };
-    //   dispatch(
-    //     quoteActions.replaceQuotesyFromServer({ quotes: processedData })
-    //   );
-    // }
+    if (!rawdata) {
+      dispatch(quoteActions.replaceQuotesyFromServer({ quotes: [] }));
+    } else {
+      const processData = [];
+      for (let key in rawdata) {
+        processData.push({
+          id: key,
+          author: rawdata[key].author,
+          text: rawdata[key].text,
+          ts: rawdata[key].ts,
+        });
+      }
+      dispatch(quoteActions.replaceQuotesyFromServer({ quotes: processData }));
+    }
   }, []);
 
   const {
-    isLoading: isLoading,
+    isloading: isLoading,
     error: quoteError,
     sendRequest: fetchQuotes,
   } = useHTTP(dispatchQuotes);
@@ -44,15 +44,12 @@ function App() {
   let messageContent = null;
 
   if (quoteError) {
+    messageContent = <Message className={styles.error}>{quoteError}</Message>;
+  }
+  if (isLoading) {
     messageContent = (
-      <Message className={styles.error}>Failed to Load Quotes</Message>
+      <Message className={styles.loading}>Connecting to server....</Message>
     );
-  } else {
-    if (isLoading) {
-      messageContent = (
-        <Message className={styles.loading}>Connecting to server....</Message>
-      );
-    }
   }
 
   return (
