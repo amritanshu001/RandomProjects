@@ -45,7 +45,7 @@ const Layout = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: { ...quote, ts: Date.now() },
+      body: JSON.stringfy({ ...quote, ts: Date.now() }),
     };
     postQuote(quoteConfig);
     console.log("quoteid: ", quoteId);
