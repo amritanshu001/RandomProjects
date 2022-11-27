@@ -9,6 +9,11 @@ const commentSlice = createSlice({
     addComment: (state, action) => {
       state.allComments.push(action.payload.comment);
     },
+    loadComments: (state, action) => {
+      state.allComments = action.payload.comments.filter((comment) => {
+        return comment.quoteId === action.payload.quoteId;
+      });
+    },
   },
 });
 

@@ -1,0 +1,11 @@
+.loading {
+  background-color: #ea910c;
+}
+
+.error {
+  background-color: #e32765;
+}
+
+.success {
+  background-color: #61d192;
+}

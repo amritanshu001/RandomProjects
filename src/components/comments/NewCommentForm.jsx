@@ -21,7 +21,7 @@ const NewCommentForm = (props) => {
 
   return (
     <form className={classes.form} onSubmit={submitFormHandler}>
-      <div className={classes.control} onSubmit={submitFormHandler}>
+      <div className={classes.control}>
         <label htmlFor="comment">Your Comment</label>
         <textarea id="comment" rows="5" ref={commentTextRef}></textarea>
         {isError && (
@@ -29,7 +29,9 @@ const NewCommentForm = (props) => {
         )}
       </div>
       <div className={classes.actions}>
-        <button className="btn">Add Comment</button>
+        <button className="btn" onClick={submitFormHandler}>
+          Add Comment
+        </button>
       </div>
     </form>
   );

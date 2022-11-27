@@ -1,9 +1,11 @@
 .message {
   text-align: center;
   margin: 0;
+  margin-bottom: 0.25rem;
   padding: 0.25rem;
   height: 3rem;
   vertical-align: center;
+  border-radius: 8px;
 }
 
 .message p {
