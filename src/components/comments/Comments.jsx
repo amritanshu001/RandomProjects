@@ -54,7 +54,11 @@ const Comments = (props) => {
 
   useEffect(() => {
     if (!isLoading && !postCommentError && commentId) {
-      refreshComments();
+      const fetchCommentsConfig = {
+        url: "https://react-requests-4b4d2-default-rtdb.firebaseio.com/comments.json",
+        method: "GET",
+      };
+      refreshComments(fetchCommentsConfig);
     }
   }, [isLoading, postCommentError, commentId]);
 

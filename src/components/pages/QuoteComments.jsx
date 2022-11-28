@@ -66,7 +66,11 @@ const QuoteComments = (props) => {
     messageContent = <Message className="error">{error}</Message>;
   }
   if (isLoading) {
-    messageContent = <LoadingSpinner />;
+    messageContent = (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   return (
@@ -86,7 +90,7 @@ const QuoteComments = (props) => {
       <Route path={`/allquotes/${params.quoteId}/comments`}>
         {messageContent}
         <Comments quoteId={params.quoteId} />
-        <CommentsList comments={allComments} />
+        <CommentsList comments={allComments.sort((a, b) => +b.ts - +a.ts)} />
       </Route>
     </div>
   );
